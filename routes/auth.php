@@ -62,5 +62,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+//    Route::post('teacher/logout', [\App\Http\Controllers\TeacherAuth\AuthenticatedTeacherSessionController::class, 'destroy']);
 });
 

@@ -30,14 +30,14 @@ class IndexController extends Controller
 //        if(Auth::guard('teacher')){
 //            dd('admin');
 //        }
+//        $user = Auth::guard('teacher')->user();
         $user = Auth::guard('teacher')->user();
-        dd($user->email);
+        print_r($user->email);
         $data['teachers'] = $this->teacherService->getAll();
         $data['activeColorDashboard'] = 'active bg-gradient-primary';
 
         return view('teacher/teacher', $data);
     }
-
 
     public function create()
     {
@@ -72,7 +72,6 @@ class IndexController extends Controller
 
     public function edit($id)
     {
-        //
         $data['teacher'] = $this->teacherService->getById($id);
         $data['activeColorDashboard'] = 'active bg-gradient-primary';
 

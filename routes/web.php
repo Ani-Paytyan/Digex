@@ -8,6 +8,8 @@ use App\Http\Controllers\teacher\IndexController;
 use App\Http\Controllers\teacher\TeacherCourseController;
 use App\Http\Controllers\admin\CourseController;
 
+use App\Http\Controllers\TeacherAuth\AuthenticatedTeacherSessionController;
+
 Route::get('/', function () {
     return view('homePage');
 });
@@ -61,7 +63,7 @@ Route::group(['prefix' => 'admin'], function () {
 //for teacher panel
 //Route::group(['middleware' => ['auth:teacher']], function () {
 Route::group(['middleware' => ['teacher']], function () {
-    Route::get('/teacher', [IndexController::class,'index']);
+//    Route::get('/teacher', [IndexController::class,'index']);
     Route::get('/teacher/edit/{id}', [IndexController::class,'edit']);
     Route::patch('/teacher/edit/{id}', [IndexController::class,'update']);
     Route::delete('/teacher/delete/{id}', [IndexController::class,'destroy']);
@@ -80,5 +82,7 @@ Route::group(['middleware' => ['teacher']], function () {
 
 Route::middleware('auth:teacher')->group(function () {
 
+    Route::get('/teacher', [IndexController::class,'index']);
+    Route::post('teacher/logout', [AuthenticatedTeacherSessionController::class, 'destroy']);
 });
 require __DIR__.'/auth.php';

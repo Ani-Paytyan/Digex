@@ -25,10 +25,7 @@ class StoreTeacherRequest extends FormRequest
     {
         return [
             'username' => 'required|string|max:30',
-            'firstName' => 'required|string|max:30',
-            'lastName' => 'required|string|max:30',
-            'phone' => 'required|numeric',
-            'profession' => 'required|string|max:30',
+            'profession' => 'required|string|max:50',
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:8'
         ];
