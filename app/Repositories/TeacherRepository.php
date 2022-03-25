@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Teacher;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Storage;
 
 class TeacherRepository
 {
@@ -36,7 +36,7 @@ class TeacherRepository
      */
     public function getById(int $id)
     {
-        return $this->teacher::find($id);
+       return $this->teacher::find($id);
     }
 
     /**
@@ -47,12 +47,20 @@ class TeacherRepository
     public function update(int $id, $request)
     {
         $teacher = $this->teacher::find($id);
-        if(!empty($teacher)) {
+        if (!empty($teacher)) {
             $teacher->username   = $request->username;
             $teacher->first_name = $request->firstName;
             $teacher->last_name  = $request->lastName;
             $teacher->phone      = $request->phone;
             $teacher->email      = $request->email;
+
+
+            if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public');
+            Storage::put('uploads/teachers_photo', $request->file('image'));
+            $teacher->image = $imagePath;
+            }
+
             $teacher->update();
 
             return $teacher;

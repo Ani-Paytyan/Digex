@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
 use App\Models\Teacher;
+use App\Services\CourseService;
 use App\Services\TeacherService;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class IndexController extends Controller
 {
@@ -15,28 +17,32 @@ class IndexController extends Controller
      * @var TeacherService
      */
     protected TeacherService $teacherService;
+    /**
+     * @var CourseService
+     */
+    protected CourseService $courseService;
 
     /**
-     * TeacherController constructor.
+     * IndexController constructor.
      * @param TeacherService $teacherService
+     * @param CourseService $courseService
      */
-    public function __construct(TeacherService $teacherService)
+    public function __construct(TeacherService $teacherService, CourseService $courseService)
     {
         $this->teacherService = $teacherService;
+        $this->courseService = $courseService;
     }
 
     public function index()
     {
-//        if(Auth::guard('teacher')){
-//            dd('admin');
-//        }
-//        $user = Auth::guard('teacher')->user();
-        $user = Auth::guard('teacher')->user();
-        print_r($user->email);
-        $data['teachers'] = $this->teacherService->getAll();
-        $data['activeColorDashboard'] = 'active bg-gradient-primary';
+        $userId = Auth::guard('teacher')->user()->getAuthIdentifier();
+        if(!empty($userId)) {
+            $data['user'] = $this->teacherService->getById($userId);
+            $data['courses'] = $this->courseService->getByTeacherId($userId);
+            $data['activeColorDashboard'] = 'active bg-gradient-primary';
 
-        return view('teacher/teacher', $data);
+            return view('teacher/teacher', $data);
+        }
     }
 
     public function create()
@@ -76,6 +82,14 @@ class IndexController extends Controller
         $data['activeColorDashboard'] = 'active bg-gradient-primary';
 
         return view('teacher/editTeacher', $data);
+    }
+
+    public function editPersonal($id)
+    {
+        $data['teacher'] = $this->teacherService->getById($id);
+        $data['activeColorDashboard'] = 'active bg-gradient-primary';
+
+        return view('teacher/editTeacherPersonalInfo', $data);
     }
 
     /**

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('teacher_id')->unsigned()->nullable();
             $table->foreign('teacher_id')->references('id')->on('teachers');
             $table->string('title');
+            $table->string('image');
             $table->string('description')->nullable();
             $table->timestamps();
         });

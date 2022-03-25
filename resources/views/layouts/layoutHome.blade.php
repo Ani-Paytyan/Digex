@@ -12,6 +12,7 @@
 {{--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>--}}
 {{--    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">--}}
     <link href="{{URL::asset('css/homePage/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link  href="{{ URL::asset('css/teacher/css/bootstrap.min.css')}}" rel="stylesheet" />
     <link href="{{URL::asset('css/homePage/css/slick.css')}}" rel="stylesheet">
     <link href="{{URL::asset('css/homePage/css/tooplate-little-fashion.css')}}" rel="stylesheet">
 </head>
@@ -28,7 +29,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{url('/teacher')}}">
                 <strong><span>Grand</span> Chess</strong>
             </a>
 
@@ -60,6 +61,7 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
+
             </div>
             <span><a href="{{route('login')}}" class="nav-link">Sign in</a></span>
             <span> <a href="{{route('register')}}" class="nav-link">Sign up</a></span>

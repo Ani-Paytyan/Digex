@@ -25,6 +25,7 @@ class TeacherCourseController extends Controller
 
     public function index()
     {
+//        dd(6);
         $data['courses'] = $this->courseService->getAll();
         $data['activeColorCourse'] = 'active bg-gradient-primary';
 
@@ -51,6 +52,7 @@ class TeacherCourseController extends Controller
     public function show($id)
     {
         $data['course'] = $this->courseService->getById($id);
+//        print_r($data['course']);exit;
             $data['activeColorCourse'] = 'active bg-gradient-primary';
 
         return view('teacher/course/detailsCourse', $data);

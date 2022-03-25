@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="{{ URL::asset('assets/css/fonts.css') }}" rel="stylesheet">
     <link  href="{{ URL::asset('css/categories.css')}}" rel="stylesheet" />
+{{--    <link  href="{{ URL::asset('css/teacher/css/bootstrap.min.css')}}" rel="stylesheet" />--}}
     <link id="pagestyle" href="{{ URL::asset('assets/css/material-dashboard.css?v=3.0.1')}}" rel="stylesheet" />
     <title>Teacher page</title>
 </head>

@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 
 class UpdateTeacherRequest extends FormRequest
 {
@@ -29,7 +32,16 @@ class UpdateTeacherRequest extends FormRequest
             'lastName'  => 'string|max:30',
             'phone'     => 'numeric',
             'email'     => 'string|email|max:255',
-//            'password' => 'required|string|min:8'
+//            'password' => 'string|min:8',
+//            'repeat_password' => 'string|min:8',
+//            'new_password' => 'string|min:8',
+//            'old_password' =>  function ($attribute, $value, $fail) {
+//                if (!Hash::check($value, Auth::user()->password)) {
+//                    $fail("Old Password didn't match");
+//                }
+//            },
+//            'repeat_password' => 'string|min:8',
         ];
+
     }
 }

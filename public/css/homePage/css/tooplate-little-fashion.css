@@ -8,7 +8,7 @@ https://www.tooplate.com/view/2127-little-fashion
 
 
 /*---------------------------------------
-  CUSTOM PROPERTIES ( VARIABLES )             
+  CUSTOM PROPERTIES ( VARIABLES )
 -----------------------------------------*/
 :root {
   --white-color:                #FFFFFF;
@@ -33,13 +33,9 @@ https://www.tooplate.com/view/2127-little-fashion
   --font-weight-black:          900;
 }
 
-body,
 html {
   height: 100%;
-}
-
-html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -48,14 +44,9 @@ html {
   }
 }
 
-body {
-    background: var(--white-color);
-    font-family: var(--body-font-family);    
-    position: relative;
-}
 
 /*---------------------------------------
-  TYPOGRAPHY               
+  TYPOGRAPHY
 -----------------------------------------*/
 
 h2,
@@ -63,7 +54,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--dark-color);
+  /*color: var(--dark-color);*/
   line-height: inherit;
 }
 
@@ -112,7 +103,7 @@ p {
   font-weight: var(--font-weight-light);
 }
 
-a, 
+a,
 button {
   touch-action: manipulation;
   transition: all 0.3s;
@@ -137,7 +128,7 @@ a:hover {
 }
 
 /*---------------------------------------
-  CUSTOM LINK               
+  CUSTOM LINK
 -----------------------------------------*/
 .custom-link {
   color: var(--p-color);
@@ -172,7 +163,7 @@ strong {
 }
 
 /*---------------------------------------
-  PRE LOADER               
+  PRE LOADER
 -----------------------------------------*/
 .preloader {
   position: fixed;
@@ -215,7 +206,7 @@ strong {
 }
 
 /*---------------------------------------
-  CUSTOM BUTTON & ICON              
+  CUSTOM BUTTON & ICON
 -----------------------------------------*/
 .custom-btn {
   background: var(--dark-color);
@@ -275,7 +266,7 @@ strong {
 }
 
 /*---------------------------------------
-  DIV SEPARATOR               
+  DIV SEPARATOR
 -----------------------------------------*/
 .div-separator {
   position: relative;
@@ -305,7 +296,7 @@ strong {
 }
 
 /*---------------------------------------
-  FULL IMAGE               
+  FULL IMAGE
 -----------------------------------------*/
 .full-image-img {
   display: block;
@@ -324,7 +315,7 @@ strong {
 }
 
 /*---------------------------------------
-  NAVIGATION               
+  NAVIGATION
 -----------------------------------------*/
 .navbar {
   background: var(--white-color);
@@ -392,7 +383,7 @@ strong {
   transform: translateY(10px);
 }
 
-.navbar .nav-link.active::after, 
+.navbar .nav-link.active::after,
 .navbar .nav-link:hover::after {
   opacity: 1;
   -webkit-transform: translateY(0px);
@@ -405,7 +396,7 @@ strong {
   color: var(--primary-color);
 }
 
-.nav-link:focus, 
+.nav-link:focus,
 .nav-link:hover {
   color: var(--p-color);
 }
@@ -477,7 +468,7 @@ strong {
 }
 
 /*---------------------------------------
-  SITE HEADER              
+  SITE HEADER
 -----------------------------------------*/
 .site-header {
   background-color: var(--section-bg-color);
@@ -506,7 +497,7 @@ strong {
 }
 
 /*---------------------------------------
-  SLICK SLIDESHOW               
+  SLICK SLIDESHOW
 -----------------------------------------*/
 @media (min-width: 992px) {
   .slick-slideshow {
@@ -638,7 +629,7 @@ strong {
 }
 
 /*---------------------------------------
-  CUSTOM CIRCLE IMAGES               
+  CUSTOM CIRCLE IMAGES
 -----------------------------------------*/
 
 .custom-circle-image {
@@ -653,7 +644,7 @@ strong {
 }
 
 /*---------------------------------------
-  TESTIMONIAL               
+  TESTIMONIAL
 -----------------------------------------*/
 .slick-testimonial .slick-list,
 .slick-testimonial .slick-track {
@@ -711,7 +702,7 @@ strong {
 }
 
 /*---------------------------------------
-  SECTION               
+  SECTION
 -----------------------------------------*/
 section {
   content-visibility: auto;
@@ -728,7 +719,7 @@ section {
 }
 
 /*---------------------------------------
-  ABOUT               
+  ABOUT
 -----------------------------------------*/
 .about .nav-pills .nav-item {
   width: 100%;
@@ -744,7 +735,7 @@ section {
 }
 
 .about .nav-pills .nav-link:hover,
-.about .nav-pills .nav-link.active, 
+.about .nav-pills .nav-link.active,
 .about .nav-pills .show>.nav-link {
   background: transparent;
   border-left-color: var(--primary-color);
@@ -752,7 +743,7 @@ section {
 }
 
 /*---------------------------------------
-  FAQ ACCORDION               
+  FAQ ACCORDION
 -----------------------------------------*/
 .accordion-item {
   background-color: transparent;
@@ -794,7 +785,7 @@ button:focus:not(:focus-visible) {
 }
 
 /*---------------------------------------
-  TEAM MEMBERS               
+  TEAM MEMBERS
 -----------------------------------------*/
 .team {
   background: var(--grey-color);
@@ -855,7 +846,7 @@ button:focus:not(:focus-visible) {
 }
 
 /*---------------------------------------
-  SKILL - PROGRESS BAR               
+  SKILL - PROGRESS BAR
 -----------------------------------------*/
 .skill-thumb strong {
   display: inline-block;
@@ -881,7 +872,7 @@ button:focus:not(:focus-visible) {
 }
 
 /*---------------------------------------
-  PRODUCT               
+  PRODUCT
 -----------------------------------------*/
 .front-product {
   background: var(--section-bg-color);
@@ -956,7 +947,7 @@ button:focus:not(:focus-visible) {
 }
 
 /*---------------------------------------
-  CONTACT              
+  CONTACT
 -----------------------------------------*/
 .contact-info {
   padding: 40px;
@@ -987,7 +978,7 @@ button:focus:not(:focus-visible) {
 }
 
 /*---------------------------------------
-  SITE FOOTER               
+  SITE FOOTER
 -----------------------------------------*/
 .site-footer {
   background: var(--dark-color);
@@ -1028,7 +1019,7 @@ button:focus:not(:focus-visible) {
 }
 
 /*---------------------------------------
-  SOCIAL ICON               
+  SOCIAL ICON
 -----------------------------------------*/
 .social-icon {
   margin: 0;
@@ -1055,7 +1046,7 @@ button:focus:not(:focus-visible) {
 }
 
 /*---------------------------------------
-  RESPONSIVE STYLES               
+  RESPONSIVE STYLES
 -----------------------------------------*/
 @media screen and (max-width: 1200px) {
   h1 {

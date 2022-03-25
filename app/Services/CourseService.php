@@ -34,6 +34,12 @@ class CourseService
     public function getById(int $id)
     {
         return $this->courseRepository->getById($id);
+    }    /**
+     * @return mixed
+     */
+    public function getByTeacherId(int $id)
+    {
+        return $this->courseRepository->getByTeacherId($id);
     }
 
     /**

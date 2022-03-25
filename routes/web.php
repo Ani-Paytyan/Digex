@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\TaskController;
 use App\Http\Controllers\admin\TeacherController;
 use App\Http\Controllers\teacher\IndexController;
 use App\Http\Controllers\teacher\TeacherCourseController;
+use App\Http\Controllers\teacher\TeacherPasswordResetController;
 use App\Http\Controllers\admin\CourseController;
 
 use App\Http\Controllers\TeacherAuth\AuthenticatedTeacherSessionController;
@@ -63,20 +64,13 @@ Route::group(['prefix' => 'admin'], function () {
 //for teacher panel
 //Route::group(['middleware' => ['auth:teacher']], function () {
 Route::group(['middleware' => ['teacher']], function () {
-//    Route::get('/teacher', [IndexController::class,'index']);
-    Route::get('/teacher/edit/{id}', [IndexController::class,'edit']);
-    Route::patch('/teacher/edit/{id}', [IndexController::class,'update']);
     Route::delete('/teacher/delete/{id}', [IndexController::class,'destroy']);
 
 //  course
-    Route::get('/teacher/course', [TeacherCourseController::class,'index']);
-    Route::get('/teacher/course/detailsCourse/{id}', [TeacherCourseController::class,'show']);
+//    Route::get('/teacher/course/detailsCourse/{id}', [TeacherCourseController::class,'show']);
     Route::get('/teacher/course/edit/{id}', [TeacherCourseController::class,'edit']);
     Route::patch('/teacher/course/edit/{id}', [TeacherCourseController::class,'update']);
-    Route::get('/teacher/course/createCourse', [TeacherCourseController::class,'create']);
-    Route::post('/teacher/course/createCourse', [TeacherCourseController::class,'store']);
     Route::delete('/teacher/course/delete/{id}', [TeacherCourseController::class,'destroy']);
-
 });
 
 
@@ -84,5 +78,23 @@ Route::middleware('auth:teacher')->group(function () {
 
     Route::get('/teacher', [IndexController::class,'index']);
     Route::post('teacher/logout', [AuthenticatedTeacherSessionController::class, 'destroy']);
+    Route::get('/teacher/edit/{id}', [IndexController::class,'edit']);
+    Route::patch('/teacher/edit/{id}', [IndexController::class,'update']);
+
+    Route::get('/teacher/course', [TeacherCourseController::class,'index']);
+    Route::get('/teacher/course/createCourse', [TeacherCourseController::class,'create']);
+    Route::post('/teacher/course/createCourse', [TeacherCourseController::class,'store']);
+    Route::get('/teacher/course/detailsCourse/{id}', [TeacherCourseController::class,'show']);
+
+
+
+    Route::get('/teacher/edit/personalInfo', [TeacherCourseController::class,'show']);
+    Route::get('/teacher/personalInfo/{id}', [IndexController::class,'editPersonal']);
+    Route::get('/teacher/passwordReset/{id}', [TeacherPasswordResetController::class,'edit']);
+    Route::post('/teacher/passwordReset/{id}', [TeacherPasswordResetController::class,'update']);
+
+
+
+
 });
 require __DIR__.'/auth.php';

@@ -145,44 +145,44 @@
         <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Teacher</label>
         <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">User</label>
         <div class="login-form">
-            <form id="loginTeacher" method="POST" action="{{ url('teacher/login') }}" class="sign-in-htm">
-        @csrf
-        <div class="group">
-            {{--                <x-label for="email" :value="__('Email')" />--}}
+        <form id="loginTeacher" method="POST" action="{{ url('teacher/login') }}" class="sign-in-htm">
+    @csrf
+    <div class="group">
+        {{--                <x-label for="email" :value="__('Email')" />--}}
 
-            {{--                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />--}}
-            <label for="user" class="label">Username</label>
-            <input id="user" class="input form-control" type="email" name="email" :value="old('email')" required autofocus >
-        </div>
-        <div class="group">
-            <label for="pass" class="label">Password</label>
-            <input id="password" class="input form-control" type="password" name="password" required autocomplete="current-password">
-        </div>
+        {{--                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />--}}
+        <label for="user" class="label">Username</label>
+        <input id="user" class="input form-control" type="email" name="email" :value="old('email')" required autofocus >
+    </div>
+    <div class="group">
+        <label for="pass" class="label">Password</label>
+        <input id="password" class="input form-control" type="password" name="password" required autocomplete="current-password">
+    </div>
 {{--        <div class="group">--}}
 {{--            <input id="check" type="checkbox" class="check" checked>--}}
 {{--            <label for="check"><span class="icon"></span> Keep me Signed in</label>--}}
 {{--        </div>--}}
-        <div class="group">
-            <input type="submit" class="btn custom-btn form-control mt-4 mb-3" value="Sign In">
+    <div class="group">
+        <input type="submit" class="btn custom-btn form-control mt-4 mb-3" value="Sign In">
+    </div>
+    <div class="hr"></div>
+    <div class="foot-lnk">
+        <!-- Remember Me -->
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+            </label>
         </div>
-        <div class="hr"></div>
-        <div class="foot-lnk">
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-            </div>
+        <div class="flex items-center justify-end mt-4">
+            @if (Route::has('password.request'))
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
+            @endif
         </div>
-        </form>
+    </div>
+    </form>
         <form id="loginUser" method="POST" action="{{ route('login') }}"  class="sign-up-htm">
         @csrf
         <div class="group">
@@ -193,10 +193,10 @@
             <label for="pass" class="label">Password</label>
             <input id="password" type="password" class="input form-control" name="password" required autocomplete="current-password">
         </div>
-        <div class="group">
-            <input id="check" type="checkbox" class="check" checked>
-            <label for="check"><span class="icon"></span> Keep me Signed in</label>
-        </div>
+{{--        <div class="group">--}}
+{{--            <input id="check" type="checkbox" class="check" checked>--}}
+{{--            <label for="check"><span class="icon"></span> Keep me Signed in</label>--}}
+{{--        </div>--}}
         <div class="group">
             <input type="submit" class="btn custom-btn form-control mt-4 mb-3" value="Sign In">
         </div>
