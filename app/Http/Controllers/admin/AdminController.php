@@ -68,7 +68,7 @@ class AdminController extends Controller
         return view('admin/edit', $data);
     }
 
-    public function update(StoreAdminRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $this->adminService->update($id, $request);
 

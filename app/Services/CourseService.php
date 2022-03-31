@@ -34,12 +34,15 @@ class CourseService
     public function getById(int $id)
     {
         return $this->courseRepository->getById($id);
-    }    /**
-     * @return mixed
+    }
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Support\Collection
      */
-    public function getByTeacherId(int $id)
+    public function getCoursesByTeacherId(int $id)
     {
-        return $this->courseRepository->getByTeacherId($id);
+        return $this->courseRepository->getCoursesByTeacherId($id);
     }
 
     /**

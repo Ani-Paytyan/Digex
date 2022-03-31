@@ -31,13 +31,10 @@
 
                                         <div class="form-group">
                                             <label for="ticket">Email:*</label>
-                                            <input type="text" class="form-control" value ="{{$admin->email}} " name="email"/>
+                                            <input type="text" class="form-control" value ="{{$admin->email}}" name="email"/>
                                         </div>
+                                        <input type="hidden" value="{{$admin->password}}" name="password">
 
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="value">New Password:*</label>--}}
-{{--                                            <input type="text" class="form-control" value="" name="password"/>--}}
-{{--                                        </div>--}}
                                         <button type="submit" class="btn btn-primary">update</button>
                                     </form>
                                 </div>

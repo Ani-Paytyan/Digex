@@ -38,7 +38,9 @@ class IndexController extends Controller
         $userId = Auth::guard('teacher')->user()->getAuthIdentifier();
         if(!empty($userId)) {
             $data['user'] = $this->teacherService->getById($userId);
-            $data['courses'] = $this->courseService->getByTeacherId($userId);
+            $data['courses'] = $this->courseService->getCoursesByTeacherId($userId);
+            $data['home'] = 'active';
+
             $data['activeColorDashboard'] = 'active bg-gradient-primary';
 
             return view('teacher/teacher', $data);

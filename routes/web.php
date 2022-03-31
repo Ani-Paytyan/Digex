@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\TeacherController;
 use App\Http\Controllers\teacher\IndexController;
 use App\Http\Controllers\teacher\TeacherCourseController;
 use App\Http\Controllers\teacher\TeacherPasswordResetController;
+use App\Http\Controllers\TeacherAuth\LessonController;
 use App\Http\Controllers\admin\CourseController;
 
 use App\Http\Controllers\TeacherAuth\AuthenticatedTeacherSessionController;
@@ -67,8 +68,6 @@ Route::group(['middleware' => ['teacher']], function () {
     Route::delete('/teacher/delete/{id}', [IndexController::class,'destroy']);
 
 //  course
-//    Route::get('/teacher/course/detailsCourse/{id}', [TeacherCourseController::class,'show']);
-    Route::get('/teacher/course/edit/{id}', [TeacherCourseController::class,'edit']);
     Route::patch('/teacher/course/edit/{id}', [TeacherCourseController::class,'update']);
     Route::delete('/teacher/course/delete/{id}', [TeacherCourseController::class,'destroy']);
 });
@@ -81,10 +80,21 @@ Route::middleware('auth:teacher')->group(function () {
     Route::get('/teacher/edit/{id}', [IndexController::class,'edit']);
     Route::patch('/teacher/edit/{id}', [IndexController::class,'update']);
 
+//    teacher->course
     Route::get('/teacher/course', [TeacherCourseController::class,'index']);
     Route::get('/teacher/course/createCourse', [TeacherCourseController::class,'create']);
     Route::post('/teacher/course/createCourse', [TeacherCourseController::class,'store']);
     Route::get('/teacher/course/detailsCourse/{id}', [TeacherCourseController::class,'show']);
+    Route::get('/teacher/course/courseDetails/edit/{id}', [TeacherCourseController::class,'edit']);
+    Route::patch('/teacher/course/courseDetails/edit/{id}', [TeacherCourseController::class,'update']);
+
+//    teacher->lesson
+    Route::get('/teacher/lesson', [LessonController::class,'index']);
+    Route::get('teacher/lesson/createLesson/{id}', [LessonController::class,'create']);
+    Route::post('teacher/lesson/createLesson', [LessonController::class,'store']);
+    Route::get('/teacher/lesson/detailsLesson/{id}', [LessonController::class,'show']);
+    Route::get('/teacher/lesson/lessonDetails/edit/{id}', [LessonController::class,'edit']);
+    Route::patch('/teacher/lesson/lessonDetails/edit/{id}', [LessonController::class,'update']);
 
 
 

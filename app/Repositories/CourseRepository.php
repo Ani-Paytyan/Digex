@@ -44,12 +44,11 @@ class CourseRepository
      * @param int $id
      * @return \Illuminate\Support\Collection
      */
-    public function getByTeacherId(int $id)
+    public function getCoursesByTeacherId(int $id)
     {
         return DB::table('courses')
             ->where('teacher_id', '=', $id)
-            ->get();
-//        return $this->course::find($id);
+            ->orderBy('updated_at','desc')->get();
     }
 
     /**
@@ -88,8 +87,9 @@ class CourseRepository
             }
 
             $course->update();
-            return $course;
         }
+        return $course;
+
     }
 
     /**

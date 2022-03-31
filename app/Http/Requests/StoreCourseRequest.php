@@ -27,7 +27,7 @@ class StoreCourseRequest extends FormRequest
             'image' => 'file',
 //            'image' => 'required|file|size:512',
             'title' => 'required|string|max:30',
-            'description' => 'required|string|max:30',
+            'description' => 'required|string|max:250',
         ];
     }
 }

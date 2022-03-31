@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseRequest;
 use App\Services\CourseService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TeacherCourseController extends Controller
 {
@@ -25,8 +26,9 @@ class TeacherCourseController extends Controller
 
     public function index()
     {
-//        dd(6);
-        $data['courses'] = $this->courseService->getAll();
+        $userId = Auth::guard('teacher')->user()->getAuthIdentifier();
+        $data['courses'] = $this->courseService->getCoursesByTeacherId($userId);
+        $data['courseActive'] = 'active';
         $data['activeColorCourse'] = 'active bg-gradient-primary';
 
         return view('/teacher/course/course', $data);
@@ -35,6 +37,8 @@ class TeacherCourseController extends Controller
     public function create()
     {
         $data['activeColorCourse'] = 'active bg-gradient-primary';
+        $data['courseActive'] = 'active';
+
         return view('/teacher/course/createCourse',$data);
     }
 
@@ -52,17 +56,17 @@ class TeacherCourseController extends Controller
     public function show($id)
     {
         $data['course'] = $this->courseService->getById($id);
-//        print_r($data['course']);exit;
-            $data['activeColorCourse'] = 'active bg-gradient-primary';
+        $data['activeColorCourse'] = 'active bg-gradient-primary';
+        $data['courseActive'] = 'active';
 
         return view('teacher/course/detailsCourse', $data);
     }
 
     public function edit($id)
     {
-        //
         $data['course'] = $this->courseService->getById($id);
         $data['activeColorCourse'] = 'active bg-gradient-primary';
+        $data['courseActive'] = 'active';
 
         return view('teacher/course/editCourse', $data);
     }
@@ -76,10 +80,8 @@ class TeacherCourseController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
