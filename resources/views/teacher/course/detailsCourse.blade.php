@@ -31,6 +31,9 @@
                         <a href="{{url('/teacher/course/courseDetails/edit/'.$course->id)}}" >
                             <button class="btn btn-danger" type="submit">Edit course</button>
                         </a>
+                        <a href="{{ url('/teacher/course/')}}">
+                            <button class="btn btn-danger" type="submit">Back</button>
+                        </a>
                     </div>
                 </div>
             </div>

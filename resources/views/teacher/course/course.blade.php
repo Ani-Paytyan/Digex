@@ -5,6 +5,11 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <h2 class="mb-5">Courses</h2>
+                        <div style ='float:left;padding: 2px 15px'>
+                            <a href="{{ url('/teacher')}}">
+                                <button class="btn btn-danger" type="submit">Back</button>
+                            </a>
+                        </div>
                         <div style ='float:right;padding: 2px 15px'>
                             <a href="{{url('teacher/course/createCourse')}}"><img src="https://img.icons8.com/material-rounded/48/fa314a/add.png"/></a>
                         </div>

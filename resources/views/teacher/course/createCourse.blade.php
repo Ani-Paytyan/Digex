@@ -4,6 +4,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
+                        <div style ='float:left;padding: 2px 15px'>
+                            <a href="{{ url('/teacher/course')}}">
+                                <button class="btn btn-danger" type="submit">Back</button>
+                            </a>
+                        </div>
                         <h4 class="text-center">Create Course</h4>
                         <div class=" my-4">
                             <div class="card-body px-0 pb-2">
@@ -32,8 +37,8 @@
                                                 <label for="stock_name">Course Description:*</label>
                                                 <input type="text" class="form-control" value="" name="description"/>
                                             </div>
-                                            <button type="submit" class="btn btn-primary">create</button>
-                                           </form>
+                                            <button type="submit" class="btn btn-danger">create</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

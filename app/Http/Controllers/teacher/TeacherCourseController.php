@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\teacher;
 
+use App\Http\Controllers\admin\CourseController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseRequest;
+use App\Models\Course;
 use App\Services\CourseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,8 +28,10 @@ class TeacherCourseController extends Controller
 
     public function index()
     {
-        $userId = Auth::guard('teacher')->user()->getAuthIdentifier();
-        $data['courses'] = $this->courseService->getCoursesByTeacherId($userId);
+        $data['courses'] = Auth::guard('teacher')->user()->courses;
+
+//        $userId = Auth::guard('teacher')->user()->getAuthIdentifier();
+//        $data['courses'] = $this->courseService->getCoursesByTeacherId($userId);
         $data['courseActive'] = 'active';
         $data['activeColorCourse'] = 'active bg-gradient-primary';
 
@@ -53,18 +57,27 @@ class TeacherCourseController extends Controller
         return redirect()->action([TeacherCourseController::class, 'index']);
     }
 
-    public function show($id)
+    public function show(Course $course)
     {
-        $data['course'] = $this->courseService->getById($id);
+        $data['course'] = $course;
         $data['activeColorCourse'] = 'active bg-gradient-primary';
         $data['courseActive'] = 'active';
 
         return view('teacher/course/detailsCourse', $data);
     }
-
-    public function edit($id)
+    public function showLessons()
     {
-        $data['course'] = $this->courseService->getById($id);
+        $data['lessons'] =  $this->courseService->getLessons();
+
+//        $userId = Auth::guard('teacher')->user()->getAuthIdentifier();
+//        $data['courses'] = $this->courseService->getCoursesByTeacherId($userId);
+        $data['lessonActive'] = 'active';
+
+        return view('teacher/lesson/lesson', $data);
+    }
+    public function edit(Course $course)
+    {
+        $data['course'] = $course;
         $data['activeColorCourse'] = 'active bg-gradient-primary';
         $data['courseActive'] = 'active';
 
@@ -85,8 +98,8 @@ class TeacherCourseController extends Controller
      */
     public function destroy($id)
     {
-        $this->courseService->deleteById($id);
-
-        return redirect()->action([CourseController::class, 'index']);
+//        $this->courseService->deleteById($id);
+//
+//        return redirect()->action([CourseController::class, 'index']);
     }
 }

@@ -34,7 +34,7 @@
                                                 <input type="text" class="form-control" value="{{$course->description}}" name="description"/>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Edit</button>
-
+                                            <a href="{{ url('/teacher/course')}}" class="btn btn-primary">back</a>
                                         </form>
                                     </div>
                                 </div>

@@ -22,4 +22,9 @@ class Lesson extends Model
         'description',
         'status',
     ];
+
+    public function courses()
+    {
+        return $this->belongsTo(Course::class);
+    }
 }

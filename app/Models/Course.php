@@ -22,4 +22,14 @@ class Course extends Model
         'image',
         'description',
     ];
+
+    public function teachers()
+    {
+        return $this->belongsTo(Teacher::class);
+    }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
+    }
 }

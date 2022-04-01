@@ -98,7 +98,7 @@
                         <h2 class="mb-5">Featured Products</h2>
                     </div>
                     @if (!empty($courses))
-                        <?php $i = 0; ?>
+                        <?php  $i = 0; ?>
                         @foreach ($courses as $course)
                             <?php $i++; ?>
                             @if ($i<4)

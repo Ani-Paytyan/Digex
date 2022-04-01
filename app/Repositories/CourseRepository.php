@@ -39,17 +39,17 @@ class CourseRepository
     {
         return $this->course::find($id);
     }
-
-    /**
-     * @param int $id
-     * @return \Illuminate\Support\Collection
-     */
-    public function getCoursesByTeacherId(int $id)
-    {
-        return DB::table('courses')
-            ->where('teacher_id', '=', $id)
-            ->orderBy('updated_at','desc')->get();
-    }
+//
+//    /**
+//     * @param int $id
+//     * @return \Illuminate\Support\Collection
+//     */
+//    public function getCoursesByTeacherId(int $id)
+//    {
+//        return $this->course
+//            ->where('teacher_id', '=', $id)
+//            ->orderBy('updated_at','desc')->get();
+//    }
 
     /**
      * @param $request

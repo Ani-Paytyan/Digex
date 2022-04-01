@@ -46,6 +46,15 @@ class CourseService
     }
 
     /**
+     * @param int $id
+     * @return \Illuminate\Support\Collection
+     */
+    public function getLessons()
+    {
+        return $this->courseRepository->with('lessons') ;
+    }
+
+    /**
      * @param $request
      * @return mixed
      */

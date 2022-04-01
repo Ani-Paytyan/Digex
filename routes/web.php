@@ -9,6 +9,7 @@ use App\Http\Controllers\teacher\TeacherCourseController;
 use App\Http\Controllers\teacher\TeacherPasswordResetController;
 use App\Http\Controllers\TeacherAuth\LessonController;
 use App\Http\Controllers\admin\CourseController;
+use App\Http\Controllers\common\MailController;
 
 use App\Http\Controllers\TeacherAuth\AuthenticatedTeacherSessionController;
 
@@ -74,6 +75,8 @@ Route::group(['middleware' => ['teacher']], function () {
 
 
 Route::middleware('auth:teacher')->group(function () {
+    Route::get('/contact', [MailController::class,'index']);
+    Route::post('/sendEmail', [MailController::class,'sendEmail']);
 
     Route::get('/teacher', [IndexController::class,'index']);
     Route::post('teacher/logout', [AuthenticatedTeacherSessionController::class, 'destroy']);
@@ -84,12 +87,13 @@ Route::middleware('auth:teacher')->group(function () {
     Route::get('/teacher/course', [TeacherCourseController::class,'index']);
     Route::get('/teacher/course/createCourse', [TeacherCourseController::class,'create']);
     Route::post('/teacher/course/createCourse', [TeacherCourseController::class,'store']);
-    Route::get('/teacher/course/detailsCourse/{id}', [TeacherCourseController::class,'show']);
-    Route::get('/teacher/course/courseDetails/edit/{id}', [TeacherCourseController::class,'edit']);
+    Route::get('/teacher/course/detailsCourse/{course}', [TeacherCourseController::class,'show']);
+    Route::get('/teacher/course/courseDetails/edit/{course}', [TeacherCourseController::class,'edit']);
     Route::patch('/teacher/course/courseDetails/edit/{id}', [TeacherCourseController::class,'update']);
 
 //    teacher->lesson
-    Route::get('/teacher/lesson', [LessonController::class,'index']);
+    Route::get('/teacher/lesson', [TeacherCourseController::class,'showLessons']);
+//    Route::get('/teacher/lesson', [LessonController::class,'index']);
     Route::get('teacher/lesson/createLesson/{id}', [LessonController::class,'create']);
     Route::post('teacher/lesson/createLesson', [LessonController::class,'store']);
     Route::get('/teacher/lesson/detailsLesson/{id}', [LessonController::class,'show']);
